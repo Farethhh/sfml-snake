@@ -1,24 +1,19 @@
+#include <iostream>
+#include <ctime>
 
-// PATH=C:\Users\Szymon\Documents\SFML-2.5.1\bin //
-
-#include  <SFML/Graphics.hpp>
+#include "Game.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Not Tetris");
+	srand(static_cast<unsigned>(time(NULL)));
 
-    sf::Event event;
+	Game game;
 
-    while (window.isOpen()) {
+	while (game.Running())
+	{
+		game.Update();
+		game.Render();
+	}
 
-        while (window.pollEvent(event)) {
-
-            if (event.type == sf::Event::Closed) {
-
-                window.close();
-            }
-        }
-    }
-
-    return 0;
+	return 0;
 }
