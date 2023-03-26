@@ -8,6 +8,8 @@ private:
 	sf::RenderWindow* window;
 	sf::Event sfmlEvent;
 
+	void InitVariables();
+
 public:
 
 	Game();
@@ -16,5 +18,7 @@ public:
 	bool Running();
 	void Update();
 	void Render();
+
+	void PollEvents();
 };
 
