@@ -1,10 +1,13 @@
 #include "Game.h"
 
+// Initialization list, make things before constructor
+// Window has to be created before other actions
+
 Game::Game()
-	: videoMode(800, 600)
+	: videoMode(WINDOW_SIZE, WINDOW_SIZE)
 	, window(new sf::RenderWindow(this->videoMode, "GAME 2", sf::Style::Close | sf::Style::Titlebar))
 {
-	InitVariables();
+	InitGameVariables();
 }
 
 Game::~Game()
@@ -13,9 +16,9 @@ Game::~Game()
 }
 
 
-void Game::InitVariables()
+void Game::InitGameVariables()
 {
-	this->window->setFramerateLimit(60);
+	this->window->setFramerateLimit(10);
 }
 
 bool Game::Running()
@@ -25,31 +28,35 @@ bool Game::Running()
 	return true;
 }
 
-void Game::Update()
+void Game::UpdateGame()
 {
 	PollEvents();
+	snake.Update();
 }
 
 void Game::Render()
 {
-	this->window->clear();
+	window->clear();
 
+	snake.RenderSnakeParts(this->window);
 
-	this->window->display();
+	window->display();
 }
+
+// Allows user exit the window by clicking and pressing escape 
 
 void Game::PollEvents()
 {
-	while (this->window->pollEvent(this->sfmlEvent))
+	while (window->pollEvent(sfmlEvent))
 	{
-		switch (this->sfmlEvent.type)
+		switch (sfmlEvent.type)
 		{
 		case sf::Event::Closed:
-			this->window->close();
+			window->close();
 			break;
 		case sf::Event::KeyPressed:
-			if (this->sfmlEvent.key.code == sf::Keyboard::Escape)
-				this->window->close();
+			if (sfmlEvent.key.code == sf::Keyboard::Escape)
+				window->close();
 			break;
 		}
 	}

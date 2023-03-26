@@ -7,11 +7,13 @@ int main()
 {
 	srand(static_cast<unsigned>(time(NULL)));
 
+	// Create game object
 	Game game;
 
+	// Create Main Loop
 	while (game.Running())
 	{
-		game.Update();
+		game.UpdateGame();
 		game.Render();
 	}
 

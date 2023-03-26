@@ -1,4 +1,5 @@
 #include "AddSfmlLibraries.h"
+#include "Snake.h"
 
 class Game
 {
@@ -8,7 +9,9 @@ private:
 	sf::RenderWindow* window;
 	sf::Event sfmlEvent;
 
-	void InitVariables();
+	Snake snake;
+
+	void InitGameVariables();
 
 public:
 
@@ -16,7 +19,7 @@ public:
 	~Game();
 
 	bool Running();
-	void Update();
+	void UpdateGame();
 	void Render();
 
 	void PollEvents();
