@@ -18,7 +18,7 @@ Game::~Game()
 
 void Game::InitGameVariables()
 {
-	this->window->setFramerateLimit(10);
+	this->window->setFramerateLimit(20);
 }
 
 bool Game::Running()
@@ -36,7 +36,7 @@ void Game::UpdateGame()
 
 void Game::Render()
 {
-	window->clear();
+	window->clear(sf::Color::White);
 
 	snake.RenderSnakeParts(this->window);
 

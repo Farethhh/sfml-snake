@@ -5,6 +5,8 @@ void Snake::InitSnakeVariables()
 {
 	snakeHead.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	snakeHead.setFillColor(sf::Color::Green);
+
+	snakTail.push_back(snakeHead);
 }
 
 Snake::Snake()
@@ -37,6 +39,8 @@ void Snake::UpdateInput()
 
 void Snake::Move()
 {
+	// Here 
+
 	switch (dir)
 	{
 	case Snake::left:
@@ -62,26 +66,27 @@ void Snake::Move()
 
 void Snake::UpdateWindowCollision()
 {
+	// Left Border
 	if (snakeHead.getPosition().x < 0.f)
 	{
 		snakeHead.setPosition(WINDOW_SIZE - CELL_SIZE, snakeHead.getGlobalBounds().top);
 	}
-	//right
+
+	// Right Border
 	if (snakeHead.getPosition().x >= WINDOW_SIZE)
 	{
 		snakeHead.setPosition(0.f, snakeHead.getGlobalBounds().top);
 	}
 
-	//top
+	// Top Border
 	if (snakeHead.getGlobalBounds().top < 0.f)
 	{
 		snakeHead.setPosition(snakeHead.getGlobalBounds().left, WINDOW_SIZE - CELL_SIZE);
 	}
 
-	//bottom
+	// Bottom Border
 	if (snakeHead.getGlobalBounds().top + snakeHead.getGlobalBounds().height > WINDOW_SIZE)
 	{
-
 		snakeHead.setPosition(snakeHead.getGlobalBounds().left, 0.f);
 	}
 }

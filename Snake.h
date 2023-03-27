@@ -13,12 +13,14 @@ private:
 	direction dir = right;
 
 	sf::RectangleShape snakeHead;
+	std::vector<sf::RectangleShape> snakTail;
 
 	void InitSnakeVariables();
 
 	void UpdateInput();
 	void Move();
 	void UpdateWindowCollision();
+
 public:
 	Snake();
 
