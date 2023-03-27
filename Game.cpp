@@ -6,6 +6,7 @@
 Game::Game()
 	: videoMode(WINDOW_SIZE, WINDOW_SIZE)
 	, window(new sf::RenderWindow(this->videoMode, "GAME 2", sf::Style::Close | sf::Style::Titlebar))
+	, fruit()
 {
 	InitGameVariables();
 }
@@ -38,7 +39,8 @@ void Game::Render()
 {
 	window->clear(sf::Color::White);
 
-	snake.RenderSnakeParts(this->window);
+	snake.RenderSnakeParts(window);
+	fruit.Render(window);
 
 	window->display();
 }

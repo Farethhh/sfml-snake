@@ -3,16 +3,21 @@
 
 void Snake::InitSnakeVariables()
 {
-	snakeHead.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
-	snakeHead.setFillColor(sf::Color::Green);
+	snakeHeadPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+	snakeHeadPart.setFillColor(sf::Color::Yellow);
 
-	snakTail.push_back(snakeHead);
+	snakTail.push_back(snakeHeadPart);
+
+	snakeTailPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+	snakeTailPart.setFillColor(sf::Color::Green);
 }
 
 Snake::Snake()
 {
 	InitSnakeVariables();
 }
+
+// Change Snake Head Moving Direction
 
 void Snake::UpdateInput()
 {
@@ -37,6 +42,8 @@ void Snake::UpdateInput()
 	}
 }
 
+// Change Snake Head Location and Set Tail Part Location to next Part of Tail Location
+
 void Snake::Move()
 {
 	// Here 
@@ -44,19 +51,19 @@ void Snake::Move()
 	switch (dir)
 	{
 	case Snake::left:
-		snakeHead.setPosition(snakeHead.getPosition().x - CELL_SIZE, snakeHead.getPosition().y);
+		snakeHeadPart.setPosition(snakeHeadPart.getPosition().x - CELL_SIZE, snakeHeadPart.getPosition().y);
 		break;
 
 	case Snake::right:
-		snakeHead.setPosition(snakeHead.getPosition().x + CELL_SIZE, snakeHead.getPosition().y);
+		snakeHeadPart.setPosition(snakeHeadPart.getPosition().x + CELL_SIZE, snakeHeadPart.getPosition().y);
 		break;
 
 	case Snake::up:
-		snakeHead.setPosition(snakeHead.getPosition().x, snakeHead.getPosition().y - CELL_SIZE);
+		snakeHeadPart.setPosition(snakeHeadPart.getPosition().x, snakeHeadPart.getPosition().y - CELL_SIZE);
 		break;
 
 	case Snake::down:
-		snakeHead.setPosition(snakeHead.getPosition().x, snakeHead.getPosition().y + CELL_SIZE);
+		snakeHeadPart.setPosition(snakeHeadPart.getPosition().x, snakeHeadPart.getPosition().y + CELL_SIZE);
 		break;
 
 	default:
@@ -67,27 +74,27 @@ void Snake::Move()
 void Snake::UpdateWindowCollision()
 {
 	// Left Border
-	if (snakeHead.getPosition().x < 0.f)
+	if (snakeHeadPart.getPosition().x < 0.f)
 	{
-		snakeHead.setPosition(WINDOW_SIZE - CELL_SIZE, snakeHead.getGlobalBounds().top);
+		snakeHeadPart.setPosition(WINDOW_SIZE - CELL_SIZE, snakeHeadPart.getGlobalBounds().top);
 	}
 
 	// Right Border
-	if (snakeHead.getPosition().x >= WINDOW_SIZE)
+	if (snakeHeadPart.getPosition().x >= WINDOW_SIZE)
 	{
-		snakeHead.setPosition(0.f, snakeHead.getGlobalBounds().top);
+		snakeHeadPart.setPosition(0.f, snakeHeadPart.getGlobalBounds().top);
 	}
 
 	// Top Border
-	if (snakeHead.getGlobalBounds().top < 0.f)
+	if (snakeHeadPart.getGlobalBounds().top < 0.f)
 	{
-		snakeHead.setPosition(snakeHead.getGlobalBounds().left, WINDOW_SIZE - CELL_SIZE);
+		snakeHeadPart.setPosition(snakeHeadPart.getGlobalBounds().left, WINDOW_SIZE - CELL_SIZE);
 	}
 
 	// Bottom Border
-	if (snakeHead.getGlobalBounds().top + snakeHead.getGlobalBounds().height > WINDOW_SIZE)
+	if (snakeHeadPart.getGlobalBounds().top + snakeHeadPart.getGlobalBounds().height > WINDOW_SIZE)
 	{
-		snakeHead.setPosition(snakeHead.getGlobalBounds().left, 0.f);
+		snakeHeadPart.setPosition(snakeHeadPart.getGlobalBounds().left, 0.f);
 	}
 }
 
@@ -102,8 +109,8 @@ void Snake::Update()
 
 void Snake::RenderSnakeParts(sf::RenderTarget* target)
 {
-	target->draw(snakeHead);
+	target->draw(snakeHeadPart);
 
-	std::cout << snakeHead.getGlobalBounds().top << "\n";
+	std::cout << snakeHeadPart.getGlobalBounds().top << "\n";
 
 }

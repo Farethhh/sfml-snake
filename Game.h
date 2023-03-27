@@ -10,6 +10,7 @@ private:
 	sf::Event sfmlEvent;
 
 	Snake snake;
+	Fruit fruit;
 
 	void InitGameVariables();
 

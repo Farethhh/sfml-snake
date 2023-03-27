@@ -1,10 +1,6 @@
 #include "AddSfmlLibraries.h"
 
-#define CELL_SIZE 20
-#define ROW 30
-
-#define WINDOW_SIZE ROW * CELL_SIZE
-
+#include "Fruit.h"
 
 class Snake
 {
@@ -12,7 +8,9 @@ private:
 	enum direction { left, right, up, down };
 	direction dir = right;
 
-	sf::RectangleShape snakeHead;
+	sf::RectangleShape snakeHeadPart;
+	sf::RectangleShape snakeTailPart;
+
 	std::vector<sf::RectangleShape> snakTail;
 
 	void InitSnakeVariables();
