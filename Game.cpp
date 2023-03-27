@@ -5,7 +5,7 @@
 
 Game::Game()
 	: videoMode(WINDOW_SIZE, WINDOW_SIZE)
-	, window(new sf::RenderWindow(this->videoMode, "GAME 2", sf::Style::Close | sf::Style::Titlebar))
+	, window(new sf::RenderWindow(videoMode, "GAME 2", sf::Style::Close | sf::Style::Titlebar))
 	, fruit()
 {
 	InitGameVariables();
@@ -13,13 +13,13 @@ Game::Game()
 
 Game::~Game()
 {
-	delete this->window;
+	delete window;
 }
 
 
 void Game::InitGameVariables()
 {
-	this->window->setFramerateLimit(20);
+	window->setFramerateLimit(20);
 }
 
 bool Game::Running()
@@ -33,6 +33,11 @@ void Game::UpdateGame()
 {
 	PollEvents();
 	snake.Update();
+
+	if (snake.SnakeAteFruit(fruit.GetSprite()))
+	{
+		fruit.RandFruitPosition();
+	}
 }
 
 void Game::Render()

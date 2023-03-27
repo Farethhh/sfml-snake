@@ -1,6 +1,5 @@
 #include "AddSfmlLibraries.h"
 
-#include "Fruit.h"
 
 class Snake
 {
@@ -8,10 +7,11 @@ private:
 	enum direction { left, right, up, down };
 	direction dir = right;
 
+	
 	sf::RectangleShape snakeHeadPart;
 	sf::RectangleShape snakeTailPart;
 
-	std::vector<sf::RectangleShape> snakTail;
+	std::vector<sf::RectangleShape> snakeTail;
 
 	void InitSnakeVariables();
 
@@ -20,8 +20,10 @@ private:
 	void UpdateWindowCollision();
 
 public:
+
 	Snake();
 
+	bool SnakeAteFruit(sf::RectangleShape tail);
 	void RenderSnakeParts(sf::RenderTarget* target);
 	
 	void Update();

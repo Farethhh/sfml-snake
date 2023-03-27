@@ -1,20 +1,22 @@
 #include "Snake.h"
+#include "Fruit.h"
 #include <iostream>
+
+Snake::Snake()
+{
+	InitSnakeVariables();
+}
 
 void Snake::InitSnakeVariables()
 {
 	snakeHeadPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	snakeHeadPart.setFillColor(sf::Color::Yellow);
 
-	snakTail.push_back(snakeHeadPart);
+	snakeTail.push_back(snakeHeadPart);
 
 	snakeTailPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	snakeTailPart.setFillColor(sf::Color::Green);
-}
-
-Snake::Snake()
-{
-	InitSnakeVariables();
+	snakeTail.push_back(snakeTailPart);
 }
 
 // Change Snake Head Moving Direction
@@ -46,7 +48,14 @@ void Snake::UpdateInput()
 
 void Snake::Move()
 {
-	// Here 
+	// Set Tail Part Location to next Part of Tail Location
+	snakeTail[0].setPosition(snakeHeadPart.getPosition());
+
+	for (int i = snakeTail.size()-1; i > 0; i--)
+	{
+		snakeTail[i].setPosition(snakeTail[i - 1].getPosition());
+	}
+
 
 	switch (dir)
 	{
@@ -98,10 +107,23 @@ void Snake::UpdateWindowCollision()
 	}
 }
 
+// If Snake
+
+bool Snake::SnakeAteFruit(sf::RectangleShape tail)
+{
+	if (snakeHeadPart.getPosition() == tail.getPosition())
+	{
+		snakeTail.push_back(snakeTailPart);
+		return true;
+	}
+	return false;
+}
+
 void Snake::Update()
 {
-	UpdateInput();
+	
 	Move();
+	UpdateInput();
 	UpdateWindowCollision();
 }
 
@@ -109,8 +131,10 @@ void Snake::Update()
 
 void Snake::RenderSnakeParts(sf::RenderTarget* target)
 {
+	for (int i = snakeTail.size()-1; i > 0; i--)
+	{
+		target->draw(snakeTail[i]);
+	}
+
 	target->draw(snakeHeadPart);
-
-	std::cout << snakeHeadPart.getGlobalBounds().top << "\n";
-
 }

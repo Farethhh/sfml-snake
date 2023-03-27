@@ -3,6 +3,17 @@
 
 #include "Game.h"
 
+// -----------------------------------------
+// -----------  ISSUES ---------------------
+// 
+// Kiedy w¹¿ roœnie jego czêœæ spawni siê w z³ej lokalizacji
+// Mo¿liwe jest prze³¹czenie kierunku wê¿a
+//
+//
+//
+//
+// -----------------------------------------
+
 int main()
 {
 	srand(static_cast<unsigned>(time(NULL)));

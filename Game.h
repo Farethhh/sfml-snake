@@ -1,4 +1,5 @@
 #include "AddSfmlLibraries.h"
+#include "Fruit.h"
 #include "Snake.h"
 
 class Game

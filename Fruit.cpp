@@ -6,6 +6,11 @@ Fruit::Fruit()
 	RandFruitPosition();
 }
 
+sf::RectangleShape Fruit::GetSprite() const
+{
+	return fruitRectangle;
+}
+
 void Fruit::InitFruitVariables()
 {
 	fruitRectangle.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));

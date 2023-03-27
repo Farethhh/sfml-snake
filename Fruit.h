@@ -7,12 +7,14 @@
 class Fruit
 {
 private:
+	
 	sf::RectangleShape fruitRectangle;
-
 	void InitFruitVariables();
 
 public:
 	Fruit();
+
+	sf::RectangleShape GetSprite() const; // tak nie powinno byæ | do zmiany
 
 	void RandFruitPosition();
 	void Render(sf::RenderTarget* target);
