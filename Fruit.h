@@ -6,17 +6,17 @@
 
 class Fruit
 {
-private:
-	
+private:	
 	sf::RectangleShape fruitRectangle;
 	void InitFruitVariables();
+	void RandomizeFruitPosition();
 
 public:
 	Fruit();
 
 	sf::RectangleShape GetSprite() const; // tak nie powinno byæ | do zmiany
 
-	void RandFruitPosition();
+	void SetRandFruitPosition(std::vector<sf::RectangleShape> snakeTail);
 	void Render(sf::RenderTarget* target);
 };
 

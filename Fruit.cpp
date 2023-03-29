@@ -1,9 +1,10 @@
 #include "Fruit.h"
+#include <iostream>
 
 Fruit::Fruit()
 {
 	InitFruitVariables();
-	RandFruitPosition();
+	RandomizeFruitPosition();
 }
 
 sf::RectangleShape Fruit::GetSprite() const
@@ -17,15 +18,31 @@ void Fruit::InitFruitVariables()
 	fruitRectangle.setFillColor(sf::Color::Red);
 }
 
-// Set Random Position of Fruit
-
-void Fruit::RandFruitPosition()
+void Fruit::RandomizeFruitPosition()
 {
 	fruitRectangle.setPosition(sf::Vector2f(
 		static_cast<float> (rand() % WINDOW_SIZE),
 		static_cast<float> (rand() % WINDOW_SIZE)
 	)
 	);
+}
+
+// Set Random Position of Fruit
+
+void Fruit::SetRandFruitPosition(std::vector<sf::RectangleShape> snakeTail)
+{
+	RandomizeFruitPosition();
+
+	for (int i = 0; i < snakeTail.size() - 1; i++)
+	{
+		if (snakeTail[i].getPosition() == fruitRectangle.getPosition())
+		{
+			RandomizeFruitPosition();
+			i = -1;
+
+			std::cout<< "\nX";
+		}
+	}
 
 }
 

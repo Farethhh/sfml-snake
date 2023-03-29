@@ -6,12 +6,16 @@
 // -----------------------------------------
 // -----------  ISSUES ---------------------
 // 
-// Kiedy w¹¿ roœnie jego czêœæ spawni siê w z³ej lokalizacji
-// Mo¿liwe jest prze³¹czenie kierunku wê¿a
+// Kiedy w¹¿ roœnie jego czêœæ spawni siê w z³ej lokalizacji - completed
+// Mo¿liwe jest prze³¹czenie kierunku wê¿a - completed
 //
-//
-//
-//
+// ----------- THINGS TO ADD --------------
+//  Menu
+//  Handling Fruit Spawn in SnakeTail
+//  MAP
+//	Œmieræ po dotkêciu ogona
+//  Licznik punktów
+// 
 // -----------------------------------------
 
 int main()

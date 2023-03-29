@@ -24,9 +24,13 @@ public:
 	Snake();
 
 	bool SnakeAteFruit(sf::RectangleShape tail);
+
+	std::vector<sf::RectangleShape> GetSnakeTail();
+
 	void RenderSnakeParts(sf::RenderTarget* target);
-	
 	void Update();
+
+	
 
 	
 

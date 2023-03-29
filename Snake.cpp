@@ -16,6 +16,8 @@ void Snake::InitSnakeVariables()
 
 	snakeTailPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	snakeTailPart.setFillColor(sf::Color::Green);
+	snakeTailPart.setPosition(-100, -0100);
+
 	snakeTail.push_back(snakeTailPart);
 }
 
@@ -28,17 +30,17 @@ void Snake::UpdateInput()
 		dir = direction::left;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && dir != direction::left)
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && dir != direction::left)
 	{
 		dir = direction::right;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && dir != direction::down)
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && dir != direction::down)
 	{
 		dir = direction::up;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && dir != direction::up)
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && dir != direction::up)
 	{
 		dir = direction::down;
 	}
@@ -119,9 +121,13 @@ bool Snake::SnakeAteFruit(sf::RectangleShape tail)
 	return false;
 }
 
+std::vector<sf::RectangleShape> Snake::GetSnakeTail()
+{
+	return snakeTail;
+}
+
 void Snake::Update()
 {
-	
 	Move();
 	UpdateInput();
 	UpdateWindowCollision();

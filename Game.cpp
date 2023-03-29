@@ -19,7 +19,7 @@ Game::~Game()
 
 void Game::InitGameVariables()
 {
-	window->setFramerateLimit(20);
+	window->setFramerateLimit(30);
 }
 
 bool Game::Running()
@@ -36,7 +36,7 @@ void Game::UpdateGame()
 
 	if (snake.SnakeAteFruit(fruit.GetSprite()))
 	{
-		fruit.RandFruitPosition();
+		fruit.SetRandFruitPosition(snake.GetSnakeTail());
 	}
 }
 
