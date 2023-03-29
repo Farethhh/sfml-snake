@@ -11,7 +11,7 @@
 //
 // ----------- THINGS TO ADD --------------
 //  Menu
-//  Handling Fruit Spawn in SnakeTail
+//  Handling Fruit Spawn in SnakeTail - completed
 //  MAP
 //	Œmieræ po dotkêciu ogona
 //  Licznik punktów

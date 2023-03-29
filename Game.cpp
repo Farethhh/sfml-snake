@@ -24,7 +24,10 @@ void Game::InitGameVariables()
 
 bool Game::Running()
 {
-	// If Head collides with other parts die
+	if (snake.SnakeCollideWithTail() == true)
+	{
+		return false;
+	}
 
 	return true;
 }

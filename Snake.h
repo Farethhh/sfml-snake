@@ -8,10 +8,10 @@ private:
 	direction dir = right;
 
 	
-	sf::RectangleShape snakeHeadPart;
-	sf::RectangleShape snakeTailPart;
+	sf::RectangleShape snakeHead;
 
 	std::vector<sf::RectangleShape> snakeTail;
+	sf::RectangleShape snakeTailPart;
 
 	void InitSnakeVariables();
 
@@ -27,6 +27,7 @@ public:
 
 	std::vector<sf::RectangleShape> GetSnakeTail();
 
+	bool SnakeCollideWithTail();
 	void RenderSnakeParts(sf::RenderTarget* target);
 	void Update();
 
