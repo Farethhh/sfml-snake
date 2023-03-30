@@ -13,6 +13,8 @@ private:
 	std::vector<sf::RectangleShape> snakeTail;
 	sf::RectangleShape snakeTailPart;
 
+	sf::Clock clock;
+
 	void InitSnakeVariables();
 
 	void UpdateInput();

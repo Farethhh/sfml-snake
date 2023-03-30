@@ -45,7 +45,7 @@ void Game::UpdateGame()
 
 void Game::Render()
 {
-	window->clear(sf::Color::White);
+	window->clear(sf::Color::Black);
 
 	snake.RenderSnakeParts(window);
 	fruit.Render(window);

@@ -10,12 +10,16 @@
 // Mo¿liwe jest prze³¹czenie kierunku wê¿a - completed
 //
 // ----------- THINGS TO ADD --------------
-//  Menu
-//  Handling Fruit Spawn in SnakeTail - completed
-//  MAP
-//	Œmieræ po dotkêciu ogona
-//  Licznik punktów
 // 
+//  Menu
+//  Licznik punktów
+//  Œmieræ
+//	Timer i dobraæ prêdkoœæ
+// 
+//  Handling Fruit Spawn in SnakeTail - completed
+//	Œmieræ po dotkêciu ogona - completed
+//
+// -----------------------------------------
 // -----------------------------------------
 
 int main()

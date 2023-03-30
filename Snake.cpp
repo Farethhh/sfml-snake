@@ -128,8 +128,14 @@ std::vector<sf::RectangleShape> Snake::GetSnakeTail()
 
 void Snake::Update()
 {
-	Move();
-	UpdateInput();
+	if (clock.getElapsedTime().asSeconds() > 0.05)
+	{
+		Move();
+		UpdateInput();
+		clock.restart();
+	}
+
+
 	UpdateWindowCollision();
 }
 
