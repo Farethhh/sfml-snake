@@ -17,8 +17,6 @@ void Snake::InitSnakeVariables()
 	snakeTailPart.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	snakeTailPart.setFillColor(sf::Color::Green);
 	snakeTailPart.setPosition(-100, -0100);
-
-	snakeTail.push_back(snakeTailPart);
 }
 
 // Change Snake Head Moving Direction
@@ -143,7 +141,7 @@ void Snake::Update()
 
 bool Snake::SnakeCollideWithTail()
 {
-	for (int i = 0; i < snakeTail.size() - 2; i++)
+	for (int i = 0; i < snakeTail.size() - 1; i++)
 	{
 		if (snakeTail[i].getPosition() == snakeHead.getPosition())
 		{

@@ -4,6 +4,20 @@
 
 class Game
 {
+public:
+
+	Game();
+	~Game();
+
+	void PollEvents();
+
+	void updateGui();
+	void renderGui(sf::RenderTarget* target);
+
+	bool Running();
+	void UpdateGame();
+	void Render();
+
 private:
 
 	sf::VideoMode videoMode;
@@ -13,17 +27,12 @@ private:
 	Snake snake;
 	Fruit fruit;
 
+	sf::Font font;
+	sf::Text guiText;
+	sf::Text endGameText;
+
 	void InitGameVariables();
+	void initText();
 
-public:
-
-	Game();
-	~Game();
-
-	bool Running();
-	void UpdateGame();
-	void Render();
-
-	void PollEvents();
 };
 
