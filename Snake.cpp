@@ -116,6 +116,7 @@ bool Snake::SnakeAteFruit(sf::RectangleShape tail)
 		snakeTail.push_back(snakeTailPart);
 		return true;
 	}
+
 	return false;
 }
 
@@ -133,7 +134,6 @@ void Snake::Update()
 		clock.restart();
 	}
 
-
 	UpdateWindowCollision();
 }
 
@@ -149,7 +149,7 @@ bool Snake::SnakeCollideWithTail()
 		}
 	}
 
-	return 0;
+	return false;
 }
 
 void Snake::RenderSnakeParts(sf::RenderTarget* target)

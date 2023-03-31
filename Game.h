@@ -9,12 +9,11 @@ public:
 	Game();
 	~Game();
 
+	bool WindowRunning() const;
+
 	void PollEvents();
 
-	void updateGui();
-	void renderGui(sf::RenderTarget* target);
-
-	bool Running();
+	void UpdateGui();
 	void UpdateGame();
 	void Render();
 
@@ -30,6 +29,8 @@ private:
 	sf::Font font;
 	sf::Text guiText;
 	sf::Text endGameText;
+
+	bool IsGameRunning();
 
 	void InitGameVariables();
 	void initText();

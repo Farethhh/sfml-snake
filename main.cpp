@@ -30,10 +30,11 @@ int main()
 	Game game;
 
 	// Create Main Loop
-	while (game.Running())
+	while (game.WindowRunning())
 	{
 		game.UpdateGame();
 		game.Render();
+
 	}
 
 	return 0;

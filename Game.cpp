@@ -6,7 +6,7 @@
 
 Game::Game()
 	: videoMode(WINDOW_SIZE, WINDOW_SIZE)
-	, window(new sf::RenderWindow(videoMode, "GAME 2", sf::Style::Close | sf::Style::Titlebar))
+	, window(new sf::RenderWindow(videoMode, "SNAKE", sf::Style::Close | sf::Style::Titlebar))
 	, fruit()
 {
 	InitGameVariables();
@@ -37,12 +37,12 @@ void Game::initText()
 
 	endGameText.setFont(font);
 	endGameText.setFillColor(sf::Color::Red);
-	endGameText.setCharacterSize(60);
-	endGameText.setPosition(sf::Vector2f(165, 250));
-	endGameText.setString("YOU ARE DEAD");
+	endGameText.setCharacterSize(50);
+	endGameText.setPosition(sf::Vector2f(150, 250));
+	endGameText.setString("GAME OVER");
 }
 
-bool Game::Running()
+bool Game::IsGameRunning()
 {
 	if (snake.SnakeCollideWithTail() == true)
 	{
@@ -52,19 +52,29 @@ bool Game::Running()
 	return true;
 }
 
+bool Game::WindowRunning() const
+{
+	return window->isOpen();
+}
+
 void Game::UpdateGame()
 {
 	PollEvents();
-	snake.Update();
-	updateGui();
 
-	if (snake.SnakeAteFruit(fruit.GetSprite()))
+	if (IsGameRunning())
 	{
-		fruit.SetRandFruitPosition(snake.GetSnakeTail());
+		snake.Update();
+		UpdateGui();
+
+		if (snake.SnakeAteFruit(fruit.GetSprite()))
+		{
+			fruit.SetRandFruitPosition(snake.GetSnakeTail());
+		}
 	}
+
 }
 
-void Game::updateGui()
+void Game::UpdateGui()
 {
 	std::stringstream ss;
 
@@ -75,18 +85,20 @@ void Game::updateGui()
 	guiText.setString(ss.str());
 }
 
-void Game::renderGui(sf::RenderTarget* target)
-{
-	target->draw(guiText);
-}
-
 void Game::Render()
 {
 	window->clear(sf::Color::Black);
 
 	snake.RenderSnakeParts(window);
 	fruit.Render(window);
-	renderGui(window);
+
+	window->draw(guiText);
+
+	if (!IsGameRunning())
+	{
+		window->draw(endGameText);
+	}
+
 
 	window->display();
 
