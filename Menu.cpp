@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include <iostream>
+#include <fstream>
 
 Menu::Menu()
 {
@@ -18,7 +19,7 @@ void Menu::InitVariables()
 		menuText[i].setFont(font);
 		menuText[i].setFillColor(sf::Color::White);
 		menuText[i].setCharacterSize(40);
-		menuText[i].setPosition(sf::Vector2f(250, 200 + i*120));
+		menuText[i].setPosition(sf::Vector2f(WINDOW_SIZE/2 - 40, 200 + i*120));
 	}
 	menuText[0].setString("Start");
 	menuText[1].setString("Credits");
@@ -29,14 +30,23 @@ void Menu::InitVariables()
 	creditsText.setFillColor(sf::Color::White);
 	creditsText.setCharacterSize(20);
 	creditsText.setString("This game was made by Szymon Pluta in March 2023.");
-
 	creditsText.setPosition(sf::Vector2f(50, 250));
 
 
+	std::fstream score("Score.txt");
+	std::string highScore;
+	score >> highScore;
+	score.close();
+
+	std::cout << highScore;
+	highScoreText.setFont(font);
+	highScoreText.setFillColor(sf::Color::White);
+	highScoreText.setCharacterSize(20);
+	highScoreText.setString("High Score: " + highScore);
+	highScoreText.setPosition(sf::Vector2f(50, 550));
+	
 	logo.loadFromFile("Logo.png");
-
 	logoSprite.setTexture(logo);
-
 	logoSprite.setPosition(sf::Vector2f(75, 30));
 	logoSprite.setScale(2.5,2.5);
 }
@@ -123,7 +133,7 @@ void Menu::Render(sf::RenderTarget* target)
 	{
 		target->clear();
 
-
+		target->draw(highScoreText);
 		target->draw(logoSprite);
 
 		for (int i = 0; i < 3; i++)

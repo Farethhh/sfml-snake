@@ -2,6 +2,7 @@
 #include "Fruit.h"
 #include "Snake.h"
 #include "Menu.h"
+#include <fstream>
 
 class Game
 {
@@ -20,6 +21,8 @@ public:
 
 private:
 
+	std::fstream score;
+	int points;
 	sf::VideoMode videoMode;
 	sf::RenderWindow* window;
 	sf::Event sfmlEvent;
@@ -37,5 +40,6 @@ private:
 	void InitGameVariables();
 	void initText();
 
+	void UpdateHighScore();
 };
 

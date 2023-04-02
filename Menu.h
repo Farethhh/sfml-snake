@@ -24,6 +24,7 @@ private:
 	sf::Font font;
 	sf::Text menuText[3];
 	sf::Text creditsText;
+	sf::Text highScoreText;
 
 	sf::Texture logo;
 	sf::Sprite logoSprite;

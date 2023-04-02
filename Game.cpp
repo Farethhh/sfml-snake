@@ -1,5 +1,7 @@
 #include "Game.h"
 #include <sstream>
+#include <iostream>
+#include <cstdlib>
 
 // Initialization list, make things before constructor
 // Window has to be created before other actions
@@ -14,6 +16,7 @@ Game::Game()
 
 Game::~Game()
 {
+	UpdateHighScore();
 	delete window;
 }
 
@@ -40,6 +43,26 @@ void Game::initText()
 	endGameText.setCharacterSize(50);
 	endGameText.setPosition(sf::Vector2f(150, 250));
 	endGameText.setString("GAME OVER");
+}
+
+void Game::UpdateHighScore()
+{
+	score.open("Score.txt");
+
+	points = snake.GetSnakeTail().size() - 1;
+
+	int highestscore;
+	score >> highestscore;
+	
+	score.close();
+
+	if (highestscore < points)
+	{
+		score.open("Score.txt", std::ios::out | std::ios::trunc);
+
+		score << points;
+	}
+
 }
 
 bool Game::IsGameRunning()
@@ -77,18 +100,20 @@ void Game::UpdateGame()
 		}
 	
 	}
-
 }
 
 void Game::UpdateGui()
 {
 	std::stringstream ss;
+	int points = snake.GetSnakeTail().size() - 1;
 
-	ss << "Points " << snake.GetSnakeTail().size() - 1 << "\n";
+
+	ss << "Points " << points << "\n";
 
 	// tutaj bêdzie wczytanie z pliku i rekord punktów zapisany
 
 	guiText.setString(ss.str());
+
 }
 
 void Game::Render()
@@ -126,12 +151,6 @@ void Game::PollEvents()
 				menu.SetStartPlaying(false);
 				menu.ExitCredits();
 			}
-
-			else if (sfmlEvent.key.code == sf::Keyboard::P)
-			{
-
-			}
-
 			break;
 		}
 	}
