@@ -1,6 +1,5 @@
 #include "AddSfmlLibraries.h"
 
-
 class Snake
 {
 public:

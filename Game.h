@@ -1,6 +1,7 @@
 #include "AddSfmlLibraries.h"
 #include "Fruit.h"
 #include "Snake.h"
+#include "Menu.h"
 
 class Game
 {
@@ -25,6 +26,7 @@ private:
 
 	Snake snake;
 	Fruit fruit;
+	Menu menu;
 
 	sf::Font font;
 	sf::Text guiText;

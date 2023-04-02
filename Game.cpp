@@ -1,6 +1,6 @@
 #include "Game.h"
 #include <sstream>
-#include <iostream>
+
 // Initialization list, make things before constructor
 // Window has to be created before other actions
 
@@ -28,7 +28,7 @@ void Game::initText()
 {
 	if (!this->font.loadFromFile("Minecraft.ttf"))
 	{
-		std::cout << "Nie udalo wczytac sie czcionki";
+		//std::cout << "Nie udalo wczytac sie czcionki";
 	}
 
 	guiText.setFont(font);
@@ -63,13 +63,19 @@ void Game::UpdateGame()
 
 	if (IsGameRunning())
 	{
-		snake.Update();
-		UpdateGui();
-
-		if (snake.SnakeAteFruit(fruit.GetSprite()))
+		menu.Update();
+			
+		if (menu.GetStartPlaying() == true)
 		{
-			fruit.SetRandFruitPosition(snake.GetSnakeTail());
+			snake.Update();
+			UpdateGui();
+
+			if (snake.SnakeAteFruit(fruit.GetSprite()))
+			{
+				fruit.SetRandFruitPosition(snake.GetSnakeTail());
+			}
 		}
+	
 	}
 
 }
@@ -87,6 +93,7 @@ void Game::UpdateGui()
 
 void Game::Render()
 {
+
 	window->clear(sf::Color::Black);
 
 	snake.RenderSnakeParts(window);
@@ -99,7 +106,7 @@ void Game::Render()
 		window->draw(endGameText);
 	}
 
-
+	menu.Render(window);
 	window->display();
 
 }
@@ -115,7 +122,16 @@ void Game::PollEvents()
 			break;
 		case sf::Event::KeyPressed:
 			if (sfmlEvent.key.code == sf::Keyboard::Escape)
-				window->close();
+			{
+				menu.SetStartPlaying(false);
+				menu.ExitCredits();
+			}
+
+			else if (sfmlEvent.key.code == sf::Keyboard::P)
+			{
+
+			}
+
 			break;
 		}
 	}

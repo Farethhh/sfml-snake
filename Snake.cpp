@@ -1,6 +1,5 @@
 #include "Snake.h"
 #include "Fruit.h"
-#include <iostream>
 
 Snake::Snake()
 {
