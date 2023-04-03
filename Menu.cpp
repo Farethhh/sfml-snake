@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include <iostream>
 #include <fstream>
 
 Menu::Menu()
@@ -11,7 +10,7 @@ void Menu::InitVariables()
 {
 	if (!this->font.loadFromFile("Minecraft.ttf"))
 	{
-		std::cout << "Nie udalo wczytac sie czcionki";
+		//std::cout << "Nie udalo wczytac sie czcionki";
 	}
 
 	for (int i = 0; i < 3; i++)
@@ -38,7 +37,6 @@ void Menu::InitVariables()
 	score >> highScore;
 	score.close();
 
-	std::cout << highScore;
 	highScoreText.setFont(font);
 	highScoreText.setFillColor(sf::Color::White);
 	highScoreText.setCharacterSize(20);

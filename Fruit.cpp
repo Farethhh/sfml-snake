@@ -1,5 +1,4 @@
 #include "Fruit.h"
-#include <iostream>
 
 Fruit::Fruit()
 {
@@ -39,8 +38,6 @@ void Fruit::SetRandFruitPosition(std::vector<sf::RectangleShape> snakeTail)
 		{
 			RandomizeFruitPosition();
 			i = -1;
-
-			std::cout<< "\nX";
 		}
 	}
 

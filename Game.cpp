@@ -1,7 +1,5 @@
 #include "Game.h"
 #include <sstream>
-#include <iostream>
-#include <cstdlib>
 
 // Initialization list, make things before constructor
 // Window has to be created before other actions
@@ -107,13 +105,8 @@ void Game::UpdateGui()
 	std::stringstream ss;
 	int points = snake.GetSnakeTail().size() - 1;
 
-
 	ss << "Points " << points << "\n";
-
-	// tutaj bêdzie wczytanie z pliku i rekord punktów zapisany
-
 	guiText.setString(ss.str());
-
 }
 
 void Game::Render()
